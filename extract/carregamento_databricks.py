@@ -3,7 +3,7 @@ import os
 
 w = WorkspaceClient(
     host="https://dbc-35d172ff-3c30.cloud.databricks.com",
-    token="dapi29480f31ac017b05bbd87d6974c91cfb"
+    token="DATABRICKS_TOKEN"
 )
 
 arquivo = os.path.join(
