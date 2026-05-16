@@ -1,19 +1,22 @@
 from databricks.sdk import WorkspaceClient
-import pandas as pd
-import requests
+import os
 
 w = WorkspaceClient(
     host="https://dbc-35d172ff-3c30.cloud.databricks.com",
-    token="SEU_TOKEN_AQUI"
+    token="dapi29480f31ac017b05bbd87d6974c91cfb"
 )
 
-arquivo=r"C:\Users\digi.luism.utic\OneDrive - SEBRAE\Documentos\Selic2020-2026\extract\selic.parquet"
+arquivo = os.path.join(
+    os.path.expanduser("~"),
+    "OneDrive", "Documentos", "pratica_pyspark",
+    "Projeto-SELIC-2020-2026", "extract", "selic.parquet"
+)
 
-with open(arquivo, "rb") as f:
+destino = "/Volumes/main/default/selic/selic.parquet"
 
-    w.files.upload(
-        "/FileStore/selic.parquet",
-        f
-    )
-
-print("Upload concluído no Databricks!")
+if not os.path.exists(arquivo):
+    print(f"Arquivo não encontrado: {arquivo}")
+else:
+    with open(arquivo, "rb") as f:
+        w.files.upload(destino, f, overwrite=True)
+    print(f"Upload concluído: {destino}")
