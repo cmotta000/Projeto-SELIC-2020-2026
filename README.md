@@ -16,7 +16,8 @@ Extrair, transformar e enriquecer os dados históricos da Taxa SELIC, criando m�
 Projeto-SELIC-2020-2026/
 │
 ├── extract/
-│   ├── carregamento_databricks.py   # Upload do arquivo para o Volume no Databricks
+│   ├── ingestaobcb.py               # Extração da Taxa SELIC via API do BCB e geração do selic.parquet (Pandas)
+│   ├── carregamento_databricks.py   # Upload do selic.parquet para o Volume no Databricks
 │   ├── volumesdatabricks.py         # Listagem de catálogos e volumes disponíveis
 │   └── config.py                    # Configurações de conexão (não sobe credenciais)
 │
